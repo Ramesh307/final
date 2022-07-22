@@ -1,0 +1,61 @@
+﻿@model IEnumerable<SchoolManageMentSystem.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "StudentView";
+}
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color: #b84dff;}
+</style>
+
+<h1 class="text-md-center">List of Students</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+          username
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a href = "Edit?id=@item.Id" class="btn btn-primary">Edit</a>
+               <a href="Details?id=@item.Id "class="btn btn-primary">Details</a>
+
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

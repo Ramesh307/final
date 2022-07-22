@@ -1,0 +1,42 @@
+﻿@model SchoolManageMentSystem.Models.RoleModel
+
+@{
+    ViewData["Title"] = "AssignRole";
+    List<SelectListItem> Roles = ViewBag.Roles;
+    List<SelectListItem> Users = ViewBag.Users;
+}
+<div class="col-md-4 offset-md-4 pt-5" style="min-height:85vh">
+
+    <h4 class="text-md-center">Assign Role</h4>
+    <hr />
+    <div class="row">
+        <div class="pt-2">
+            <form asp-action="AssignRole" asp-controller="Account" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="RoleName" class="control-label text-dark"></label>
+                     <select asp-for="RoleName" asp-items="Roles" class="form-select"></select>
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserId" class="control-label text-dark"></label>
+                     <select asp-for="UserId" asp-items="Users" class="form-select"></select>
+                    <span asp-validation-for="UserId" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="submit" value="Assign" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
